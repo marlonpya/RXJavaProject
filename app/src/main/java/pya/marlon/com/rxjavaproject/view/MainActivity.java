@@ -1,17 +1,23 @@
 package pya.marlon.com.rxjavaproject.view;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import pya.marlon.com.rxjavaproject.MyApplication;
 import pya.marlon.com.rxjavaproject.R;
 import pya.marlon.com.rxjavaproject.domain.model.UserBean;
 import pya.marlon.com.rxjavaproject.view.adapter.UserAdapter;
+import rx.Observable;
 import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -57,8 +63,19 @@ public class MainActivity extends BaseActivity {
                         UserAdapter adapter = new UserAdapter(MainActivity.this, userBeen);
                         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                         recyclerView.setAdapter(adapter);
+                        Observable.from(userBeen)
+                                .forEach(user -> Log.d(TAG, user.toString()));
                     }
                 });
+    }
+
+    @OnClick(R.id.btnFacebook)
+    public void onFacebook() {
+        Log.d(TAG, "click");
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse("https://developers.facebook.com"))
+                .build();
+        ShareDialog.show(this, content);
     }
 
     @Override

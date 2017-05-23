@@ -3,6 +3,7 @@ package pya.marlon.com.rxjavaproject;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -30,6 +31,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        AppEventsLogger.activateApp(this);
     }
 
     public RetrofitService getService() {
