@@ -7,9 +7,12 @@ import com.facebook.appevents.AppEventsLogger;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 
 import java.util.ArrayList;
 
+import io.fabric.sdk.android.Fabric;
 import pya.marlon.com.rxjavaproject.domain.model.UserBean;
 import pya.marlon.com.rxjavaproject.domain.ro.RetrofitService;
 import retrofit2.Retrofit;
@@ -23,6 +26,8 @@ import rx.Observable;
 
 public class MyApplication extends Application {
     public static final String BASE_URL = "https://api.github.com/";
+    public static final String TWITTER_KEY = "sW9RxkIDytsFssL8hieMqxva4";
+    public static final String TWITTER_SECRET = "rSYstjeUw1FVoSu9JvscWsyPQdATbHbtV95VtzlH9RKgZYybFS";
 
     private static MyApplication instance;
     private RetrofitService service;
@@ -32,6 +37,8 @@ public class MyApplication extends Application {
         super.onCreate();
         instance = this;
         AppEventsLogger.activateApp(this);
+        TwitterAuthConfig config = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(config));
     }
 
     public RetrofitService getService() {

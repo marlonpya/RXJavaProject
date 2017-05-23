@@ -24,6 +24,11 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
 }
 
 dependencies {
@@ -45,4 +50,7 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.8'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile('com.twitter.sdk.android:twitter:2.3.2@aar') {
+        transitive = true
+    }
 }

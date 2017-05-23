@@ -7,11 +7,23 @@
     android:orientation="vertical"
     tools:context="pya.marlon.com.rxjavaproject.view.MainActivity">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnFacebook"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="share facebook" />
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="share facebook" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnTwitter"
+            android:text="share Twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvUser"

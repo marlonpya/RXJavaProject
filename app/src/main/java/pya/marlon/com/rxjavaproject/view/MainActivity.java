@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import java.util.ArrayList;
 
@@ -76,6 +77,12 @@ public class MainActivity extends BaseActivity {
                 .setContentUrl(Uri.parse("https://developers.facebook.com"))
                 .build();
         ShareDialog.show(this, content);
+    }
+
+    @OnClick(R.id.btnTwitter)
+    public void onTwitter() {
+        TweetComposer.Builder tweetComposer = new TweetComposer.Builder(this).text("fasfa");
+        tweetComposer.show();
     }
 
     @Override
