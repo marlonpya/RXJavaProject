@@ -23,6 +23,7 @@ public class MainActivity extends BaseActivity {
     private Subscription subscription;
     private double time = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
